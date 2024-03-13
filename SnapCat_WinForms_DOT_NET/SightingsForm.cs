@@ -1,8 +1,8 @@
 namespace SnapCat_WinForms_DOT_NET
 {
-	public partial class Form1 : Form
+	public partial class SightingsForm : Form
 	{
-		public Form1()
+		public SightingsForm()
 		{
 			InitializeComponent();
 		}
