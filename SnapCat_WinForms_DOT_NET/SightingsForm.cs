@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace SnapCat_WinForms_DOT_NET
@@ -10,31 +11,35 @@ namespace SnapCat_WinForms_DOT_NET
 		}
 
 
-
-		public void CustomizeLinearGradients(PaintEventArgs e)
-		{
-			LinearGradientBrush linGrBrush = new LinearGradientBrush(
-			   new Point(0, 10),
-			   new Point(200, 10),
-			   Color.FromArgb(255, 0, 0, 0),     // Opaque black
-			   Color.FromArgb(255, 255, 0, 0));  // Opaque red
-
-			float[] relativeIntensities = { 0.0f, 0.5f, 1.0f };
-			float[] relativePositions = { 0.0f, 0.2f, 1.0f };
-
-			//Create a Blend object and assign it to linGrBrush.
-			Blend blend = new Blend();
-			blend.Factors = relativeIntensities;
-			blend.Positions = relativePositions;
-			linGrBrush.Blend = blend;
-
-			e.Graphics.FillEllipse(linGrBrush, 0, 30, 200, 100);
-			e.Graphics.FillRectangle(linGrBrush, 0, 155, 500, 30);
-		}
-
 		private void label2_Click(object sender, EventArgs e)
 		{
 
 		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			int size = -1;
+			OpenFileDialog openFileDialog1 = new OpenFileDialog();
+			DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+			if (result == DialogResult.OK) // Test result.
+			{
+				string file = openFileDialog1.FileName;
+				try
+				{
+					if(Path.GetExtension(file).Equals(".png")){ 
+						string text = File.ReadAllText(file);
+						size = text.Length;
+						pictureBox1.Image = new Bitmap(file);
+						//pictureBox1.Image = Image.FromFile(text);
+						//Image.FromFile(text);
+					}
+				}
+				catch (IOException)
+				{
+				}
+			}
+		}
+		//bitmap, metafile, icon, JPEG, GIF, or PNG file
+		//extensions of .bmp, .ico, .gif, .wmf, .jpg.
 	}
 }

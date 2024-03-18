@@ -49,7 +49,7 @@ namespace SnapCat_WinForms_DOT_NET
 			// 
 			pictureBox1.BackColor = Color.White;
 			pictureBox1.BackgroundImageLayout = ImageLayout.Center;
-			pictureBox1.BorderStyle = BorderStyle.FixedSingle;
+			pictureBox1.BorderStyle = BorderStyle.Fixed3D;
 			pictureBox1.Image = Properties.Resources.camera_temp;
 			pictureBox1.Location = new Point(208, 154);
 			pictureBox1.Name = "pictureBox1";
@@ -75,6 +75,7 @@ namespace SnapCat_WinForms_DOT_NET
 			button1.TabIndex = 2;
 			button1.Text = "Gallery";
 			button1.UseVisualStyleBackColor = true;
+			button1.Click += button1_Click;
 			// 
 			// button2
 			// 
