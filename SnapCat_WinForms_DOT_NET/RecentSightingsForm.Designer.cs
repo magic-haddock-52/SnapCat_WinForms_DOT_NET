@@ -1,4 +1,7 @@
-﻿namespace SnapCat_WinForms_DOT_NET
+﻿
+using System.Drawing.Drawing2D;
+
+namespace SnapCat_WinForms_DOT_NET
 {
 	partial class RecentSightingsForm
 	{
@@ -52,6 +55,35 @@
 			Text = "RecentSightingsForm";
 			Load += RecentSightingsForm_Load;
 			ResumeLayout(false);
+			this.Paint += new PaintEventHandler(set_background);
+		}
+
+		private void set_background(object sender, PaintEventArgs e)
+		{
+			LinearGradientBrush linGrBrush = new LinearGradientBrush(
+				new Point(0, 0),
+				//new Point(500, 500),
+				new Point(0, 1000),
+				Color.FromArgb(255, 128, 0, 128),     // Opaque black
+				Color.FromArgb(255, 255, 0, 0)
+			);  // Opaque red
+
+			float[] relativeIntensities = { 0.0f, 0.5f, 1.0f };
+			float[] relativePositions = { 0.0f, 0.5f, 1.0f };
+
+			//float[] relativeIntensities = { 0.0f, 0.5f, 1.0f };
+			//float[] relativePositions = { 0.0f, 0.2f, 1.0f };
+
+
+			//Create a Blend object and assign it to linGrBrush.
+			Blend blend = new Blend();				
+			blend.Factors = relativeIntensities;				
+			blend.Positions = relativePositions;
+			linGrBrush.Blend = blend;
+
+			//e.Graphics.FillEllipse(linGrBrush, 0, 30, 200, 100);
+			e.Graphics.FillRectangle(linGrBrush, 0, 0, 900, 1000);
+			
 		}
 
 		#endregion
