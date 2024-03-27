@@ -53,9 +53,10 @@ namespace SnapCat_WinForms_DOT_NET
 			Controls.Add(button2);
 			Name = "RecentSightingsForm";
 			Text = "RecentSightingsForm";
+			WindowState = FormWindowState.Maximized;
 			Load += RecentSightingsForm_Load;
+			Paint += set_background;
 			ResumeLayout(false);
-			this.Paint += new PaintEventHandler(set_background);
 		}
 
 		private void set_background(object sender, PaintEventArgs e)

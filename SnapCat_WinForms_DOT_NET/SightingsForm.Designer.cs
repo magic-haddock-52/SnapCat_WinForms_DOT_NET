@@ -1,4 +1,5 @@
 ﻿using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 namespace SnapCat_WinForms_DOT_NET
 {
@@ -42,6 +43,8 @@ namespace SnapCat_WinForms_DOT_NET
 			button2 = new Button();
 			label1 = new Label();
 			label2 = new Label();
+			label3 = new Label();
+			label4 = new Label();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			SuspendLayout();
 			// 
@@ -51,7 +54,7 @@ namespace SnapCat_WinForms_DOT_NET
 			pictureBox1.BackgroundImageLayout = ImageLayout.Center;
 			pictureBox1.BorderStyle = BorderStyle.Fixed3D;
 			pictureBox1.Image = Properties.Resources.camera_temp;
-			pictureBox1.Location = new Point(208, 154);
+			pictureBox1.Location = new Point(2238, 429);
 			pictureBox1.Name = "pictureBox1";
 			pictureBox1.Size = new Size(452, 427);
 			pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -60,7 +63,7 @@ namespace SnapCat_WinForms_DOT_NET
 			// 
 			// textBox1
 			// 
-			textBox1.Location = new Point(208, 659);
+			textBox1.Location = new Point(1245, 895);
 			textBox1.Multiline = true;
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(452, 133);
@@ -69,7 +72,7 @@ namespace SnapCat_WinForms_DOT_NET
 			// button1
 			// 
 			button1.Font = new Font("Georgia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			button1.Location = new Point(237, 833);
+			button1.Location = new Point(415, 1008);
 			button1.Name = "button1";
 			button1.Size = new Size(177, 71);
 			button1.TabIndex = 2;
@@ -80,7 +83,7 @@ namespace SnapCat_WinForms_DOT_NET
 			// button2
 			// 
 			button2.Font = new Font("Georgia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			button2.Location = new Point(455, 833);
+			button2.Location = new Point(2190, 995);
 			button2.Name = "button2";
 			button2.Size = new Size(177, 71);
 			button2.TabIndex = 3;
@@ -93,11 +96,12 @@ namespace SnapCat_WinForms_DOT_NET
 			label1.BackColor = Color.Transparent;
 			label1.Font = new Font("Georgia", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			label1.ForeColor = Color.White;
-			label1.Location = new Point(28, 28);
+			label1.Location = new Point(1542, 69);
 			label1.Name = "label1";
 			label1.Size = new Size(604, 72);
 			label1.TabIndex = 4;
 			label1.Text = "Report a Sighting";
+			label1.Click += label1_Click;
 			// 
 			// label2
 			// 
@@ -105,19 +109,47 @@ namespace SnapCat_WinForms_DOT_NET
 			label2.BackColor = Color.Transparent;
 			label2.Font = new Font("Georgia", 12F);
 			label2.ForeColor = Color.White;
-			label2.Location = new Point(117, 659);
+			label2.Location = new Point(792, 964);
 			label2.Name = "label2";
 			label2.Size = new Size(85, 38);
 			label2.TabIndex = 5;
 			label2.Text = "Info:";
 			label2.Click += label2_Click;
 			// 
+			// label3
+			// 
+			label3.AutoSize = true;
+			label3.BackColor = Color.Transparent;
+			label3.Font = new Font("Georgia", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label3.ForeColor = Color.White;
+			label3.Location = new Point(849, 69);
+			label3.Name = "label3";
+			label3.Size = new Size(518, 72);
+			label3.TabIndex = 6;
+			label3.Text = "View Sightings";
+			label3.Click += label3_Click;
+			// 
+			// label4
+			// 
+			label4.AutoSize = true;
+			label4.BackColor = Color.Transparent;
+			label4.Font = new Font("Georgia", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label4.ForeColor = Color.White;
+			label4.Location = new Point(1444, 69);
+			label4.Name = "label4";
+			label4.Size = new Size(55, 72);
+			label4.TabIndex = 7;
+			label4.Text = "|";
+			label4.Click += label4_Click;
+			// 
 			// SightingsForm
 			// 
 			AutoScaleDimensions = new SizeF(13F, 32F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.Control;
-			ClientSize = new Size(877, 950);
+			ClientSize = new Size(2854, 1729);
+			Controls.Add(label4);
+			Controls.Add(label3);
 			Controls.Add(label2);
 			Controls.Add(label1);
 			Controls.Add(button2);
@@ -125,7 +157,8 @@ namespace SnapCat_WinForms_DOT_NET
 			Controls.Add(textBox1);
 			Controls.Add(pictureBox1);
 			Name = "SightingsForm";
-			Text = "Form1";
+			Text = "SnapCat";
+			WindowState = FormWindowState.Maximized;
 			Paint += set_background;
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			ResumeLayout(false);
@@ -134,10 +167,14 @@ namespace SnapCat_WinForms_DOT_NET
 
 		private void set_background(object sender, PaintEventArgs e)
 		{
+			Rectangle screen = Screen.FromControl(this).Bounds;
+			Width = screen.Width;
+			Height = screen.Height;
+
 			LinearGradientBrush linGrBrush = new LinearGradientBrush(
 				new Point(0, 0),
 				//new Point(500, 500),
-				new Point(0, 1000),
+				new Point(0, Height), 
 				Color.FromArgb(255, 128, 0, 128),     // Opaque black
 				Color.FromArgb(255, 255, 0, 0)
 			);  // Opaque red
@@ -156,7 +193,7 @@ namespace SnapCat_WinForms_DOT_NET
 			linGrBrush.Blend = blend;
 
 			//e.Graphics.FillEllipse(linGrBrush, 0, 30, 200, 100);
-			e.Graphics.FillRectangle(linGrBrush, 0, 0, 900, 1000);
+			e.Graphics.FillRectangle(linGrBrush, 0, 0, Width, Height);
 
 		}
 
@@ -168,5 +205,7 @@ namespace SnapCat_WinForms_DOT_NET
 		private Button button2;
 		private Label label1;
 		private Label label2;
+		private Label label3;
+		private Label label4;
 	}
 }

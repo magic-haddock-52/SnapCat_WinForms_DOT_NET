@@ -5,6 +5,7 @@ namespace SnapCat_WinForms_DOT_NET
 {
 	public partial class SightingsForm : Form
 	{
+
 		public SightingsForm()
 		{
 			InitializeComponent();
@@ -26,7 +27,8 @@ namespace SnapCat_WinForms_DOT_NET
 				string file = openFileDialog1.FileName;
 				try
 				{
-					if(Path.GetExtension(file).Equals(".png")){ 
+					if (Path.GetExtension(file).Equals(".png"))
+					{
 						string text = File.ReadAllText(file);
 						size = text.Length;
 						pictureBox1.Image = new Bitmap(file);
@@ -39,6 +41,22 @@ namespace SnapCat_WinForms_DOT_NET
 				}
 			}
 		}
+
+		private void label1_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label3_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label4_Click(object sender, EventArgs e)
+		{
+
+		}
+
 		//bitmap, metafile, icon, JPEG, GIF, or PNG file
 		//extensions of .bmp, .ico, .gif, .wmf, .jpg.
 	}
