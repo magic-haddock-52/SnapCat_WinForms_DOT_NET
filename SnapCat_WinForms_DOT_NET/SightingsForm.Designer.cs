@@ -41,9 +41,9 @@ namespace SnapCat_WinForms_DOT_NET
 			textBox1 = new TextBox();
 			button1 = new Button();
 			button2 = new Button();
-			label1 = new Label();
+			reportLabel = new Label();
 			label2 = new Label();
-			label3 = new Label();
+			viewLabel = new Label();
 			label4 = new Label();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			SuspendLayout();
@@ -54,54 +54,54 @@ namespace SnapCat_WinForms_DOT_NET
 			pictureBox1.BackgroundImageLayout = ImageLayout.Center;
 			pictureBox1.BorderStyle = BorderStyle.Fixed3D;
 			pictureBox1.Image = Properties.Resources.camera_temp;
-			pictureBox1.Location = new Point(2238, 429);
+			pictureBox1.Location = new Point(592, 487);
 			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(452, 427);
+			pictureBox1.Size = new Size(907, 798);
 			pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
 			pictureBox1.TabIndex = 0;
 			pictureBox1.TabStop = false;
 			// 
 			// textBox1
 			// 
-			textBox1.Location = new Point(1245, 895);
+			textBox1.Location = new Point(1636, 599);
 			textBox1.Multiline = true;
 			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(452, 133);
+			textBox1.Size = new Size(510, 448);
 			textBox1.TabIndex = 1;
 			// 
 			// button1
 			// 
 			button1.Font = new Font("Georgia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			button1.Location = new Point(415, 1008);
+			button1.Location = new Point(1682, 1106);
 			button1.Name = "button1";
-			button1.Size = new Size(177, 71);
+			button1.Size = new Size(177, 99);
 			button1.TabIndex = 2;
-			button1.Text = "Gallery";
+			button1.Text = "Select Image";
 			button1.UseVisualStyleBackColor = true;
 			button1.Click += button1_Click;
 			// 
 			// button2
 			// 
 			button2.Font = new Font("Georgia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			button2.Location = new Point(2190, 995);
+			button2.Location = new Point(1915, 1106);
 			button2.Name = "button2";
-			button2.Size = new Size(177, 71);
+			button2.Size = new Size(177, 99);
 			button2.TabIndex = 3;
-			button2.Text = "Camera";
+			button2.Text = "Upload";
 			button2.UseVisualStyleBackColor = true;
 			// 
-			// label1
+			// reportLabel
 			// 
-			label1.AutoSize = true;
-			label1.BackColor = Color.Transparent;
-			label1.Font = new Font("Georgia", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label1.ForeColor = Color.White;
-			label1.Location = new Point(1542, 69);
-			label1.Name = "label1";
-			label1.Size = new Size(604, 72);
-			label1.TabIndex = 4;
-			label1.Text = "Report a Sighting";
-			label1.Click += label1_Click;
+			reportLabel.AutoSize = true;
+			reportLabel.BackColor = Color.Transparent;
+			reportLabel.Font = new Font("Georgia", 24F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+			reportLabel.ForeColor = Color.White;
+			reportLabel.Location = new Point(1542, 69);
+			reportLabel.Name = "reportLabel";
+			reportLabel.Size = new Size(604, 72);
+			reportLabel.TabIndex = 4;
+			reportLabel.Text = "Report a Sighting";
+			reportLabel.Click += label1_Click;
 			// 
 			// label2
 			// 
@@ -109,25 +109,25 @@ namespace SnapCat_WinForms_DOT_NET
 			label2.BackColor = Color.Transparent;
 			label2.Font = new Font("Georgia", 12F);
 			label2.ForeColor = Color.White;
-			label2.Location = new Point(792, 964);
+			label2.Location = new Point(1636, 558);
 			label2.Name = "label2";
 			label2.Size = new Size(85, 38);
 			label2.TabIndex = 5;
 			label2.Text = "Info:";
 			label2.Click += label2_Click;
 			// 
-			// label3
+			// viewLabel
 			// 
-			label3.AutoSize = true;
-			label3.BackColor = Color.Transparent;
-			label3.Font = new Font("Georgia", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label3.ForeColor = Color.White;
-			label3.Location = new Point(849, 69);
-			label3.Name = "label3";
-			label3.Size = new Size(518, 72);
-			label3.TabIndex = 6;
-			label3.Text = "View Sightings";
-			label3.Click += label3_Click;
+			viewLabel.AutoSize = true;
+			viewLabel.BackColor = Color.Transparent;
+			viewLabel.Font = new Font("Georgia", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			viewLabel.ForeColor = Color.White;
+			viewLabel.Location = new Point(849, 69);
+			viewLabel.Name = "viewLabel";
+			viewLabel.Size = new Size(518, 72);
+			viewLabel.TabIndex = 6;
+			viewLabel.Text = "View Sightings";
+			viewLabel.Click += viewLabel_Click;
 			// 
 			// label4
 			// 
@@ -140,7 +140,7 @@ namespace SnapCat_WinForms_DOT_NET
 			label4.Size = new Size(55, 72);
 			label4.TabIndex = 7;
 			label4.Text = "|";
-			label4.Click += label4_Click;
+			label4.Click += reportLabel_Click;
 			// 
 			// SightingsForm
 			// 
@@ -149,9 +149,9 @@ namespace SnapCat_WinForms_DOT_NET
 			BackColor = SystemColors.Control;
 			ClientSize = new Size(2854, 1729);
 			Controls.Add(label4);
-			Controls.Add(label3);
+			Controls.Add(viewLabel);
 			Controls.Add(label2);
-			Controls.Add(label1);
+			Controls.Add(reportLabel);
 			Controls.Add(button2);
 			Controls.Add(button1);
 			Controls.Add(textBox1);
@@ -203,9 +203,9 @@ namespace SnapCat_WinForms_DOT_NET
 		private TextBox textBox1;
 		private Button button1;
 		private Button button2;
-		private Label label1;
+		private Label reportLabel;
 		private Label label2;
-		private Label label3;
+		private Label viewLabel;
 		private Label label4;
 	}
 }

@@ -47,12 +47,17 @@ namespace SnapCat_WinForms_DOT_NET
 
 		}
 
-		private void label3_Click(object sender, EventArgs e)
+		private void viewLabel_Click(object sender, EventArgs e)
 		{
-
+			var frm = new RecentSightingsForm();
+			frm.Location = this.Location;
+			frm.StartPosition = FormStartPosition.Manual;
+			frm.FormClosing += delegate { this.Show(); };
+			frm.Show();
+			this.Hide();
 		}
 
-		private void label4_Click(object sender, EventArgs e)
+		private void reportLabel_Click(object sender, EventArgs e)
 		{
 
 		}

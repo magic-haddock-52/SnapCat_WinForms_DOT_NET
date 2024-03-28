@@ -32,6 +32,9 @@ namespace SnapCat_WinForms_DOT_NET
 		private void InitializeComponent()
 		{
 			button2 = new Button();
+			label4 = new Label();
+			recentViewLabel = new Label();
+			recentReportLabel = new Label();
 			SuspendLayout();
 			// 
 			// button2
@@ -45,11 +48,52 @@ namespace SnapCat_WinForms_DOT_NET
 			button2.UseVisualStyleBackColor = true;
 			button2.Click += button2_Click;
 			// 
+			// label4
+			// 
+			label4.AutoSize = true;
+			label4.BackColor = Color.Transparent;
+			label4.Font = new Font("Georgia", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label4.ForeColor = Color.White;
+			label4.Location = new Point(1444, 69);
+			label4.Name = "label4";
+			label4.Size = new Size(55, 72);
+			label4.TabIndex = 10;
+			label4.Text = "|";
+			// 
+			// recentViewLabel
+			// 
+			recentViewLabel.AutoSize = true;
+			recentViewLabel.BackColor = Color.Transparent;
+			recentViewLabel.Font = new Font("Georgia", 24F, FontStyle.Bold | FontStyle.Underline);
+			recentViewLabel.ForeColor = Color.White;
+			recentViewLabel.Location = new Point(849, 69);
+			recentViewLabel.Name = "recentViewLabel";
+			recentViewLabel.Size = new Size(518, 72);
+			recentViewLabel.TabIndex = 9;
+			recentViewLabel.Text = "View Sightings";
+			recentViewLabel.Click += recentViewLabel_Click;
+			// 
+			// recentReportLabel
+			// 
+			recentReportLabel.AutoSize = true;
+			recentReportLabel.BackColor = Color.Transparent;
+			recentReportLabel.Font = new Font("Georgia", 24F, FontStyle.Bold);
+			recentReportLabel.ForeColor = Color.White;
+			recentReportLabel.Location = new Point(1542, 69);
+			recentReportLabel.Name = "recentReportLabel";
+			recentReportLabel.Size = new Size(604, 72);
+			recentReportLabel.TabIndex = 8;
+			recentReportLabel.Text = "Report a Sighting";
+			recentReportLabel.Click += recentReportLabel_Click;
+			// 
 			// RecentSightingsForm
 			// 
 			AutoScaleDimensions = new SizeF(13F, 32F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(885, 1027);
+			ClientSize = new Size(2854, 1729);
+			Controls.Add(label4);
+			Controls.Add(recentViewLabel);
+			Controls.Add(recentReportLabel);
 			Controls.Add(button2);
 			Name = "RecentSightingsForm";
 			Text = "RecentSightingsForm";
@@ -57,14 +101,19 @@ namespace SnapCat_WinForms_DOT_NET
 			Load += RecentSightingsForm_Load;
 			Paint += set_background;
 			ResumeLayout(false);
+			PerformLayout();
 		}
 
 		private void set_background(object sender, PaintEventArgs e)
 		{
+			Rectangle screen = Screen.FromControl(this).Bounds;
+			Width = screen.Width;
+			Height = screen.Height;
+
 			LinearGradientBrush linGrBrush = new LinearGradientBrush(
 				new Point(0, 0),
 				//new Point(500, 500),
-				new Point(0, 1000),
+				new Point(0, Height),
 				Color.FromArgb(255, 128, 0, 128),     // Opaque black
 				Color.FromArgb(255, 255, 0, 0)
 			);  // Opaque red
@@ -77,18 +126,21 @@ namespace SnapCat_WinForms_DOT_NET
 
 
 			//Create a Blend object and assign it to linGrBrush.
-			Blend blend = new Blend();				
-			blend.Factors = relativeIntensities;				
+			Blend blend = new Blend();
+			blend.Factors = relativeIntensities;
 			blend.Positions = relativePositions;
 			linGrBrush.Blend = blend;
 
 			//e.Graphics.FillEllipse(linGrBrush, 0, 30, 200, 100);
-			e.Graphics.FillRectangle(linGrBrush, 0, 0, 900, 1000);
-			
+			e.Graphics.FillRectangle(linGrBrush, 0, 0, Width, Height);
+
 		}
 
 		#endregion
 
 		private Button button2;
+		private Label label4;
+		private Label recentViewLabel;
+		private Label recentReportLabel;
 	}
 }
